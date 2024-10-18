@@ -9,14 +9,54 @@ $logo: 'none';
 $logo-image: 'https://raw.githubusercontent.com/radiantearth/stac-site/master/images/logo/stac-030-long.png';
 $logo-image-height: 100px;
 
+
+:root {
+  // colors
+  --darkblue: #003247;
+  --lightblue: #00619E;
+  --green: #008E7A;
+  --lightgreen: #00AE9D;
+  --yellow: #FBAB18;
+  --orange: #F47920;
+  --body-bg: #043346;
+
+  --white: #fff;
+  --black: #000;
+  --light: #e7e7e7;
+  --greylight: #F3F7F8;
+  --stroke: #dcdcdc;
+
+  --underline: #CCD6DA;
+
+  // Colors in rgb
+  --darkblue-rgb: 0, 50, 71;
+  --lightblue-rgb: 0, 97, 158;
+  --green-rgb: 0, 142, 122;
+  --lightgreen-rgb: 0, 174, 157;
+  --yellow-rgb: 251, 171, 24;
+  --orange-rgb: 244, 121, 32;
+  --light-rgb: 231, 231, 231;
+
+  --text-4xl: 3.1875rem;
+  --text-3xl: 2.375rem;
+  --text-2xl: 1.75rem;
+  --text-xl: 1.5rem;
+  --text-lg: 1.25rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --font-family: 'ESANotes', Arial, sans-serif;
+}
+
 // Background and text default colors
-$body-bg: white;
-$body-color: black;
+$body-bg: var(--dark-blue);
+$body-color: #ced4da;
 
 // Colors
 $theme-colors: (
-  "primary":       #188191,
-  "secondary":     #6c757d,
+  "primary":       rgba(4, 51, 64, 1),
+  "secondary":     #ced4da,
+  "tertiary":      #00AE9D,
   "success":       #28a745,
   "info":          #09B3AD,
   "warning":       #ffc107,
@@ -37,9 +77,9 @@ $grid-breakpoints: (
 );
 
 // Font size
-$font-size-base: 1rem;
+$font-size-base: .9rem;
 // Fonts for normal text
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif: 'Arial', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 // Fonts for headings
 $headings-font-family: $font-family-sans-serif;
 // Fonts for code
@@ -55,7 +95,7 @@ $h4-font-size: 1.2rem;
 $headings-color: null;
 
 // Links
-$link-color: map-get($theme-colors, "primary");
+$link-color: map-get($theme-colors, "secondary");
 $link-decoration: none;
 $link-hover-color: darken($link-color, 15%);
 $link-hover-decoration: underline;
@@ -71,3 +111,24 @@ $border-radius: 0.25rem;
 
 // Max. icon size
 $max-icon-size: 32px;
+
+
+
+@font-face {
+  font-display: swap;
+  font-family: "ESANotes";
+  font-style: normal;
+  font-weight: 400;
+  src: url("@/theme/assets/fonts/NotesEsaReg.otf")
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "ESANotes";
+  font-style: normal;
+  font-weight: 800;
+  src: url("@/theme/assets/fonts/NotesEsaBol.otf")
+}
+
+
+
