@@ -11,7 +11,26 @@ function getPath(route, config) {
 function getRoutes(config) {
   let routes = [];
 
-  if (!config.catalogUrl) {
+  if (config.supportedCatalogues) {
+    routes.push({
+      path: "/",
+      name: "select",
+      component: () => import("../views/PreconfiguredDataSource.vue"),
+      props: {
+        catalogues: config.supportedCatalogues
+      }
+    });
+    routes.push({
+      path: "/search/external/(.*)",
+      name: "search",
+      component: () => import("../views/Search.vue"),
+      props: route => {
+        return {
+          loadParent: `/external/${route.params.pathMatch}`
+        };
+      }
+    });
+  } else if (!config.catalogUrl) {
     routes.push({
       path: "/",
       name: "select",
@@ -27,8 +46,7 @@ function getRoutes(config) {
         };
       }
     });
-  }
-  else {
+  } else {
     routes.push({
       path: "/search",
       name: "search",
