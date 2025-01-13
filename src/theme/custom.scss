@@ -1,0 +1,12 @@
+.title {
+  &::after {
+    position: absolute;
+    content: '';
+    width: 26px;
+    height: 26px;
+    background-image: url('@/theme/assets/icon-cloud.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+}
