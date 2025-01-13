@@ -116,11 +116,6 @@
   @include media-breakpoint-up(lg) {
     padding-block: 0;
   }
-
-  a:hover {
-    text-decoration: none;
-    color: var(--white);
-  }
 }
 
 .c-header__logo {
@@ -134,6 +129,11 @@
 
   @include media-breakpoint-up(lg) {
     font-size: var(--text-3xl);
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: var(--white);
   }
 }
 
@@ -161,7 +161,7 @@
     margin: 0;
   }
 
-  a {
+  a.menu-link {
     position: relative;
     display: block;
     padding-inline: 1rem;
@@ -170,10 +170,6 @@
     font-size: var(--text-base);
     font-weight: 400;
     text-decoration: none;
-  }
-
-  li {
-    opacity: 1 !important;
   }
 
   li.has-children > a {
@@ -188,7 +184,7 @@
       top: 50%;
       right: 0;
       transform: translateY(-50%);
-      background-image: url('@/theme/assets/img/icons/icon-caret-down-blue.svg');
+      background-image: url('@/../public/assets/img/icons/icon-caret-down-blue.svg');
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
@@ -220,5 +216,5 @@
   width: 14px;
   height: 10px;
   background-repeat: no-repeat;
-  background-image: url('@/theme/assets/img/icons/arrow_right_alt.svg');
+  background-image: url('@/../public/assets/img/icons/arrow_right_alt.svg');
 }
