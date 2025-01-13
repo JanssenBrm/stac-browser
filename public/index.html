@@ -4,8 +4,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta id="meta-description" name="description" content="">
-  <!-- <script defer="defer" src="/config.js"></script> -->
+  <meta name="description" id="meta-description" content="">
+  <meta name="og:type" content="website">
+  <meta name="og:url" id="og-url" content="<%= htmlWebpackPlugin.options.url %>">
+  <meta property="og:title" id="og-title" content="<%= htmlWebpackPlugin.options.title %>"/>
+  <meta name="og:description" id="og-description" content="">
+  <meta name="og:locale" id="og-locale" content="en">
+  <meta name="og:site_name" content="<%= htmlWebpackPlugin.options.title %>">
   <link href="/assets/img/logos/apex_icon_blue.svg" rel="icon" type="image/svg+xml">
   <title><%= htmlWebpackPlugin.options.title %></title>
   <script type="application/javascript" src="/assets/js/menu.js"></script>

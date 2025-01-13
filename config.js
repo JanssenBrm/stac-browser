@@ -53,10 +53,7 @@ module.exports = {
   apiCatalogPriority: null,
   useTileLayerAsFallback: true,
   displayGeoTiffByDefault: false,
-  buildTileUrlTemplate: ({
-                           href,
-                           asset
-                         }) => "https://tiles.rdnt.io/tiles/{z}/{x}/{y}@2x?url=" + encodeURIComponent(asset.href.startsWith("/vsi") ? asset.href : href),
+  buildTileUrlTemplate: ({href, asset}) => "https://tiles.rdnt.io/tiles/{z}/{x}/{y}@2x?url=" + encodeURIComponent(asset.href.startsWith("/vsi") ? asset.href : href),
   stacProxyUrl: null,
   pathPrefix: "/",
   historyMode: "history",
@@ -73,6 +70,7 @@ module.exports = {
   crossOriginMedia: null,
   requestHeaders: {},
   requestQueryParameters: {},
+  socialSharing: ['email', 'bsky', 'mastodon', 'x'],
   preprocessSTAC: null,
   authConfig: {
     type: 'openIdConnect',

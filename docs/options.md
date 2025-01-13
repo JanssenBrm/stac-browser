@@ -14,36 +14,47 @@ The following ways to set config options are possible:
   Then run the build procedure and after completion, you can fill the `dist/config.js` with any options that you want to customize.
 
 **The following options are available:**
-* [catalogUrl](#catalogurl)
-* [catalogTitle](#catalogtitle)
-* [allowExternalAccess](#allowexternalaccess)
-* [allowedDomains](#alloweddomains)
-* [apiCatalogPriority](#apicatalogpriority)
-* [detectLocaleFromBrowser](#detectlocalefrombrowser)
-* [storeLocale](#storelocale)
-* [locale](#locale)
-* [fallbackLocale](#fallbacklocale)
-* [supportedLocales](#supportedlocales)
-* [historyMode](#historymode)
-* [pathPrefix](#pathprefix)
-* [stacProxyUrl](#stacproxyurl)
-* [buildTileUrlTemplate](#buildtileurltemplate)
-* [useTileLayerAsFallback](#usetilelayerasfallback)
-* [displayGeoTiffByDefault](#displaygeotiffbydefault)
-* [redirectLegacyUrls](#redirectlegacyurls)
-* [itemsPerPage](#itemsperpage)
-* [maxPreviewsOnMap](#maxpreviewsonmap)
-* [cardViewMode](#cardviewmode)
-* [cardViewSort](#cardviewsort)
-* [showKeywordsInItemCards](#showkeywordsinitemcards)
-* [showKeywordsInCatalogCards](#showkeywordsincatalogcards)
-* [showThumbnailsAsAssets](#showthumbnailsasassets)
-* [defaultThumbnailSize](#defaultthumbnailsize)
-* [crossOriginMedia](#crossoriginmedia)
-* [requestHeaders](#requestheaders)
-* [requestQueryParameters](#requestqueryparameters)
-* [authConfig](#authconfig)
-* [preprocessSTAC](#preprocessstac)
+- [Options](#options)
+  - [catalogUrl](#catalogurl)
+  - [catalogTitle](#catalogtitle)
+  - [allowExternalAccess](#allowexternalaccess)
+  - [allowedDomains](#alloweddomains)
+  - [apiCatalogPriority](#apicatalogpriority)
+  - [detectLocaleFromBrowser](#detectlocalefrombrowser)
+  - [storeLocale](#storelocale)
+  - [locale](#locale)
+  - [fallbackLocale](#fallbacklocale)
+  - [supportedLocales](#supportedlocales)
+  - [historyMode](#historymode)
+    - [`history`](#history)
+    - [`hash`](#hash)
+  - [pathPrefix](#pathprefix)
+  - [stacProxyUrl](#stacproxyurl)
+  - [buildTileUrlTemplate](#buildtileurltemplate)
+  - [useTileLayerAsFallback](#usetilelayerasfallback)
+  - [displayGeoTiffByDefault](#displaygeotiffbydefault)
+  - [redirectLegacyUrls](#redirectlegacyurls)
+  - [itemsPerPage](#itemsperpage)
+  - [maxPreviewsOnMap](#maxpreviewsonmap)
+  - [cardViewMode](#cardviewmode)
+  - [cardViewSort](#cardviewsort)
+  - [showKeywordsInItemCards](#showkeywordsinitemcards)
+  - [showKeywordsInCatalogCards](#showkeywordsincatalogcards)
+  - [showThumbnailsAsAssets](#showthumbnailsasassets)
+  - [defaultThumbnailSize](#defaultthumbnailsize)
+  - [crossOriginMedia](#crossoriginmedia)
+  - [requestHeaders](#requestheaders)
+  - [requestQueryParameters](#requestqueryparameters)
+  - [socialSharing](#socialsharing)
+  - [authConfig](#authconfig)
+    - [API Keys](#api-keys)
+      - [Example 1: HTTP Request Header Value](#example-1-http-request-header-value)
+      - [Example 2: Query Parameter Value](#example-2-query-parameter-value)
+    - [HTTP Basic](#http-basic)
+    - [OpenID Connect](#openid-connect)
+      - [Example](#example)
+  - [preprocessSTAC](#preprocessstac)
+    - [Example: Update root catalog](#example-update-root-catalog)
 
 ## catalogUrl
 
@@ -232,14 +243,17 @@ The maximum number of previews (thumbnails or overviews) of items that will be s
 
 ## cardViewMode
 
-The default view mode for lists of catalogs/collections. Either `"list"` or `"cards"` (default). 
+The default view mode for lists of catalogs/collections. Either `"list"` or `"cards"` (default).
 
 ## cardViewSort
 
 The default sorting for lists of catalogs/collections or items. One of:
+
 - `"asc"`: ascending sort (default)
 - `"desc"`: descending sort
 - `null`: sorted as in the source files
+
+Doesn't apply when API search filters are applied.
 
 ## showKeywordsInItemCards
 
@@ -271,8 +285,6 @@ This is affected by [`allowedDomains`](#alloweddomains).
 
 Example: `{'Authorization': 'Bearer 134567984623223'}` adds a Bearer token to the HTTP headers.
 
-Please note that this option can only be provided through a config file and is not available via CLI/ENV.
-
 ## requestQueryParameters
 
 ***experimental***
@@ -282,7 +294,16 @@ This is affected by [`allowedDomains`](#alloweddomains).
 
 Example: `{'f': 'json'}` adds a `f` query parameter to the HTTP URL, e.g. `https://example.com?f=json`.
 
-Please note that this option can only be provided through a config file and is not available via CLI/ENV.
+## socialSharing
+
+Lists the social sharing service for which buttons should be shown in the "Share" panel.
+
+The following services are supported:
+
+- `email` (Send via e-email)
+- `bsky` (Bluesky)
+- `mastodon` (Mastodon.social)
+- `x` (X, formerly Twitter)
 
 ## authConfig
 
@@ -309,8 +330,6 @@ In addition the following properties are supported:
     **Note:** You can leave the description empty in the config file and instead provide a localized string with the key `authConfig` -> `description` in the file for custom phrases (`src/locales/custom.js`).
 
 Authentication is generally affected by the [`allowedDomains`](#alloweddomains) option.
-
-The `authConfig` option can only be provided through a config file and is not available via CLI/ENV.
 
 ### API Keys
 
@@ -368,7 +387,8 @@ For OpenID Connect some additional options must be provided, which currently fol
 [oidc-client-ts Configuration options](https://github.com/okta/okta-auth-js?tab=readme-ov-file#configuration-options).
 These options (except for `issuer`) must be provided in the property `oidcConfig`.
 The `client_id` option defaults to `stac-browser`.
-The redirect URL for the OIDC client must be set as follows:
+
+The redirect URL for the OIDC client must be the STAC Browser URL, e.g. `https://mycompany.com/browser`, plus an appended `/auth`, so for example `https://mycompany.com/browser/auth`.
 
 #### Example
 
@@ -384,6 +404,8 @@ The redirect URL for the OIDC client must be set as follows:
 
 For a given token `123` this results in the following additional HTTP Header:
 `Authorization: Bearer 123`
+
+You can change the default behaviour to send it as a Bearer token by providing `in`, `name` and `format`.
 
 ## preprocessSTAC
 
