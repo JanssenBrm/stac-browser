@@ -8,14 +8,14 @@ implemented as a single page application (SPA) for ease of development and to
 limit the overall number of catalog reads necessary when browsing (as catalogs
 may be nested and do not necessarily contain references to their parents).
 
-Version: **3.3.0** (supports all STAC versions between 0.6.0 and 1.1.0)
+Version: **3.3.4** (supports all STAC versions between 0.6.0 and 1.1.0)
 
 This package has also been published to npm as [`@radiantearth/stac-browser`](https://www.npmjs.com/package/@radiantearth/stac-browser).
 
 It's not officially supported, but you may also be able to use it for
 certain _OGC API - Records_ and _OGC API - Features_ compliant servers.
 
-**Please note that STAC Browser is currently without funding for both maintenance, bug fixes and improvements. This means issues and PRs may be addressed very slowly.
+**Please note that STAC Browser is currently with limited funding for both maintenance, bug fixes and improvements. This means issues and PRs may be addressed very slowly.
 If you care about STAC Browser and have some funds to support the future of STAC Browser, please contact matthias@mohr.ws**
 
 **Table of Contents:**
@@ -123,18 +123,30 @@ You need to change the [`locale`](docs/options.md#locale) and [`supportedLocales
 
 The following languages are currently supported:
 
-- German (Germany, Switzerland)
-- Spanish
-- English (International, US, UK)
-- French (Canada, France, Switzerland)
-- Italian (Italy, Switzerland)
-- Romanian
-- Japanese
-- Portuguese (Brazil, Portugal)
+- Arabic `ar`
+- German `de` (Germany `de`, Switzerland `de-CH`)
+- Spanish `es`
+- English `en` (International `en`, US `en-US`, UK `en-GB`)
+- French `fr` (Canada `fr-CA`, France `fr`, Switzerland `fr-CH`)
+- Italian `it` (Italy `it`, Switzerland `it-CH`)
+- Romanian `ro`
+- Japanese `ja`
+- Portuguese `pt` (Brazil `pt-BR`, Portugal `pt`)
 
 We manage the translations in Crowdin, please see <https://crowdin.com/project/stac-browser/> for details.
 
 To add your own language, please follow the guide below: [Adding a new language](#adding-a-new-language)
+
+The following contributors kindly provide the translations:
+
+- [@jfbourgon](https://github.com/jfbourgon): `fr`, `fr-CA`
+- [@mneagul](https://github.com/mneagul): `ro`
+- [@m-mohr](https://github.com/m-mohr): `de`, `en`, `en-GB`, `en-US`
+- [@p1d1d1](https://github.com/p1d1d1): `de-CH`, `fr-CH`, `it`, `it-CH`
+- [@psacra](https://github.com/psacra): `pt`
+- [@randa-11295](https://github.com/randa-11295): `ar`
+- [@rnanclares](https://github.com/rnanclares): `es`
+- [@uba](https://github.com/uba): `pt-BR`
 
 #### Custom phrases
 
@@ -306,8 +318,10 @@ You can also use one of the existing languages and provide an alternate version 
 The following sponsors have provided a substantial amount of funding for STAC Browser in the past:
 
 - [Radiant Earth](https://radiant.earth) (base funding for versions 1, 2 and 3)
+- [swisstopo](https://www.swisstopo.admin.ch/) (maintenance, base funding for version 3 and 4)
 - [National Resources Canada](https://natural-resources.canada.ca/home) (multi-language support, maintenance)
 - [Matthias Mohr - Softwareentwicklung](https://mohr.ws) (maintenance)
-- [Spacebel](https://spacebel.com) (collection search)
-- [Planet](https://planet.com) (OpenID Connect authentication, other features, maintenance)
-- [CloudFerro](https://cloudferro.com) (authentication, Alternate Asset and Storage extensions)
+- [Spacebel](https://spacebel.com) (collection search, mapping)
+- [Planet](https://planet.com) (authentication, maintenance)
+- [CloudFerro](https://cloudferro.com) (authentication, alternate asset and storage extension)
+- [Geobeyond](http://www.geobeyond.it/) (mapping)

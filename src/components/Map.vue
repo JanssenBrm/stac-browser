@@ -386,7 +386,7 @@ export default {
             displayGeoTiffByDefault: true
           });
           for(let link of sourceLinks) {
-            this.$store.dispatch('load', {url: link.href})
+            this.$store.dispatch('load', { url: link.href, omitApi: true })
               .then(() => {
                 let sourceStac = this.getStac(link.href, true);
                 if (sourceStac instanceof STAC) {
@@ -484,7 +484,7 @@ export default {
             layer: event.layer,
             key: event.layer._leaflet_id
           };
-          if (event.layer) {
+          if (event.layer && typeof event.layer.setStyle === 'function') {
             this.selectedItem.oldStyle = Object.assign({}, event.layer.options);
             event.layer.setStyle(Object.assign({}, event.layer.options, {color: '#dc3545'}));
           }

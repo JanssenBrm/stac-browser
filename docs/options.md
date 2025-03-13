@@ -35,6 +35,7 @@ The following ways to set config options are possible:
   - [displayGeoTiffByDefault](#displaygeotiffbydefault)
   - [redirectLegacyUrls](#redirectlegacyurls)
   - [itemsPerPage](#itemsperpage)
+  - [maxItemsPerPage](#maxitemsperpage)
   - [maxPreviewsOnMap](#maxpreviewsonmap)
   - [cardViewMode](#cardviewmode)
   - [cardViewSort](#cardviewsort)
@@ -172,7 +173,7 @@ Using this parameter for the dev server will make STAC Browser available at `htt
 
 ## stacProxyUrl
 
-***experimental***
+**DEPRECATED!**
 
 Setting the `stacProxyUrl` allows users to modify the URLs contained in the catalog to point to another location.
 For instance, if you are serving a catalog on the local file system at `/home/user/catalog.json`, but want to serve
@@ -229,13 +230,17 @@ Loading non-cloud-optimized GeoTiffs only works reliably for smaller files (< 1M
 
 ## redirectLegacyUrls
 
-***experimental***
+**DEPRECATED!**
 
 If you are updating from on old version of STAC Browser, you can set this option to `true` to redirect users from the old "unreadable" URLs to the new human-readable URLs.
 
 ## itemsPerPage
 
 The number of items requested and shown per page by default. Only applies to APIs that support the `limit` query parameter.
+
+## maxItemsPerPage
+
+The maximum number of items per page that a user can request through the `limit` query parameter (`1000` by default).
 
 ## maxPreviewsOnMap
 
@@ -265,7 +270,7 @@ Enables keywords in the lists of catalogs/collections if set to `true`. Defaults
 
 ## showThumbnailsAsAssets
 
-Defines whether thumbnails are shown in the lists of assets (`true`, default) or not.
+Defines whether thumbnails are shown in the lists of assets (`true`) or not (`false`, default).
 
 ## defaultThumbnailSize
 
